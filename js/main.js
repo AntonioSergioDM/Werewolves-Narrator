@@ -12,7 +12,19 @@ $(document).ready(() => {
         firstNightBtn.on('click', onFirstNight);
         otherNightBtn.on('click', onNight);
         resetBtn.on('click', onReset);
+        loadChars();
     };
+
+    let loadChars = function() {
+        let charString = charsDiv.html();
+        let html = '';
+
+        allOrder.forEach((name)=>{
+            html+=charString.replaceAll('character', name);
+        })
+
+        charsDiv.html(html);
+    }
 
     let onCharClick = function (evt) {
         let char = $(evt.target);

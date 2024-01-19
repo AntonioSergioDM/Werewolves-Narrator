@@ -18,7 +18,7 @@ ul.characters_list li input[type="checkbox"] {
 
 label {
   border: 1px solid #fff;
-  padding: 10px;
+  border-radius: 10%;
   display: block;
   position: relative;
   margin: 10px;
@@ -29,11 +29,10 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  z-index: 2;
 }
 
 label::before {
-  background-color: white;
-  color: white;
   content: " ";
   display: block;
   border-radius: 50%;
@@ -47,6 +46,7 @@ label::before {
   line-height: 28px;
   transition-duration: 0.4s;
   transform: scale(0);
+  z-index: 2;
 }
 
 label img {
