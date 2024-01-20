@@ -6,15 +6,18 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Werewolves</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
     <script type="text/javascript" src='js/firstNightOrder.js'></script>
     <script type="text/javascript" src='js/nightOrder.js'></script>
     <script type="text/javascript" src='js/allOrder.js'></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    <script type="text/javascript" src='js/timer.js'></script>
     <script type="text/javascript" src='js/main.js'></script>
 </head>
 
-<body>  
+<body>
     <h1>Werewolves of Miller's Hollow</h1>
     <ul id="characters" class="characters_list">
         <li>
@@ -24,10 +27,17 @@
             </label>
         </li>
     </ul>
+    <div id="gameTips" style="display: none;">
+
+    </div>
+    <div id="timer" class="timer" style="display: none;">
+
+    </div>
     <div>
-        <button id="firstNight">First Night</button>
-        <button id="otherNight" style="display: none;">Night</button>
-        <button id="reset" style="display: none;">Reset</button>
+        <button id="firstNight" class="button">First Night</button>
+        <button id="otherNight" class="button" style="display: none;">Night</button>
+        <button id="reset" class="button" style="display: none;">Reset</button>
+
     </div>
 </body>
 

@@ -1,8 +1,9 @@
-
 $(document).ready(() => {
     let charsDiv = $('#characters');
     let firstNightBtn = $('#firstNight');
     let otherNightBtn = $('#otherNight');
+    let gameTips = $('#gameTips');
+    let timerElem = $('#timer');
     let resetBtn = $('#reset');
     let startChars = {};
     let activeChars = {};
@@ -15,12 +16,12 @@ $(document).ready(() => {
         loadChars();
     };
 
-    let loadChars = function() {
+    let loadChars = function () {
         let charString = charsDiv.html();
         let html = '';
 
-        allOrder.forEach((name)=>{
-            html+=charString.replaceAll('character', name);
+        allOrder.forEach((name) => {
+            html += charString.replaceAll('character', name);
         })
 
         charsDiv.html(html);
@@ -32,11 +33,14 @@ $(document).ready(() => {
     };
 
     let onReset = function () {
-        otherNightBtn.hide();
         resetBtn.hide();
+        otherNightBtn.hide();
         firstNightBtn.show();
+        timerElem.hide();
+        timer.stopTimer();
 
-        $('.characters_list input[type="checkbox"]').each((_, element)=>{
+
+        $('.characters_list input[type="checkbox"]').each((_, element) => {
             $(element).prop('checked', startChars[$(element).prop('id')]);
         });
     };
@@ -46,7 +50,7 @@ $(document).ready(() => {
         resetBtn.show();
         firstNightBtn.hide();
 
-        startChars = {...activeChars};
+        startChars = { ...activeChars };
         runNight(firstNightOrder);
         runDay();
     };
@@ -56,15 +60,17 @@ $(document).ready(() => {
         runDay();
     };
 
-    let runNight = function(order) {
+    let runNight = function (order) {
+        gameTips.show();
         order.forEach(name => {
             if (activeChars[name]) {
+
                 // TODO play audio
             }
         });
     };
 
-    let runDay = function() {
+    let runDay = function () {
         // TODO Timer
     }
 

@@ -7,29 +7,34 @@ var allOrder = [
     'witch',
     'villager',
     'idiot',
+    'elder',
     'wolfhound',
     'wildchild',
 
 
-    'actor',
-    'angel',
-    'beartamer',
     'bigbadwolf',
+    'whitewolf',
+    'wolffather',
+
     'brothers',
+    'sisters',
+
+
     'defender',
-    'elder',
-    'fox',
-    'girl',
     'gypsy',
     'judge',
     'knight',
-    'manipulator',
-    'piper',
     'pyromaniac',
     'scandalmonger',
     'scapegoat',
+
+    'beartamer',
+    'fox',
+    
+    'actor',
+    'angel',
+    'manipulator',
+    'piper',
     'servant',
-    'sisters',
-    'whitewolf',
-    'wolffather',
+    'girl',
 ]
