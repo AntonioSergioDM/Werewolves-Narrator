@@ -20,7 +20,7 @@ $(document).ready(() => {
         let charString = charsDiv.html();
         let html = '';
 
-        allOrder.forEach((name) => {
+        listOrder.forEach((name) => {
             html += charString.replaceAll('character', name);
         })
 
@@ -49,21 +49,23 @@ $(document).ready(() => {
         firstNightBtn.hide();
 
         startChars = { ...activeChars };
-        runNight(firstNightOrder);
+        runNight(true);
         runDay();
     };
 
     let onNight = function () {
-        runNight(nightOrder);
+        runNight();
         runDay();
     };
 
-    let runNight = function (order) {
+    let runNight = function (firstNight) {
         gameTips.show();
-        order.forEach(name => {
+        nightOrder.forEach(name => {
             if (activeChars[name]) {
-                timer.startTimer(30,timerElem)
+                if (firstNight || !charOptions[name].onlyFirstNight) {
                 // TODO play audio
+                    timer.startTimer(30, timerElem);
+                }
             }
         });
     };

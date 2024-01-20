@@ -1,11 +1,11 @@
-var allOrder = [
+var listOrder = [
     'werewolves',
     'seer',
+    'villager',
     'thief',
     'cupid',
     'hunter',
     'witch',
-    'villager',
     'idiot',
     'elder',
     'wolfhound',
@@ -37,4 +37,6 @@ var allOrder = [
     'piper',
     'servant',
     'girl',
-]
+];
+
+var nightOrder = ['werewolves'];

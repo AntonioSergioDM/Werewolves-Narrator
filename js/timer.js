@@ -1,7 +1,6 @@
 var timer = function () {
     let timerElem, min, sec, timer;
     let startTimer = function (seconds, elem) {
-        console.log('timer start');
         timerElem = elem;
         min = parseInt(seconds / 60, 10)
         sec = parseInt(seconds % 60, 10);
@@ -15,14 +14,13 @@ var timer = function () {
             (sec < 10 ? "0" + sec : sec)
         ).show();
 
-        console.log('show');
-
         if (--sec < 0) {
             sec = 59;
             min--
         }
 
         if (min >= 0) {
+            clearTimeout(timer);
             timer = setTimeout(changeTimer, 1000);
         }
     }
