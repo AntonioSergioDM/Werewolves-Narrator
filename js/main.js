@@ -1,82 +1,81 @@
-$(document).ready(() => {
-    let charsDiv = $('#characters');
-    let firstNightBtn = $('#firstNight');
-    let otherNightBtn = $('#otherNight');
-    let gameTips = $('#gameTips');
-    let timerElem = $('#timer');
-    let resetBtn = $('#reset');
-    let startChars = {};
-    let activeChars = {};
+let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars;
 
-    let init = function () {
-        charsDiv.on('change', onCharClick);
-        firstNightBtn.on('click', onFirstNight);
-        otherNightBtn.on('click', onNight);
-        resetBtn.on('click', onReset);
-        // sound.background();
-        loadChars();
-    };
+let init = function () {
+    charsDiv = $('#characters');
+    firstNightBtn = $('#firstNight');
+    otherNightBtn = $('#otherNight');
+    gameTips = $('#gameTips');
+    resetBtn = $('#reset');
+    startChars = {};
+    activeChars = {};
 
-    let loadChars = function () {
-        let charString = charsDiv.html();
-        let html = '';
+    charsDiv.on('change', onCharClick);
+    firstNightBtn.on('click', onFirstNight);
+    otherNightBtn.on('click', onNight);
+    resetBtn.on('click', onReset);
+    timer.setTimerElem($('#timer'));
+    // sound.background();
+    loadChars();
+};
 
-        listOrder.forEach((name) => {
-            html += charString.replaceAll('character', name);
-        })
+let loadChars = function () {
+    let charString = charsDiv.html();
+    let html = '';
 
-        charsDiv.html(html);
-    }
+    listOrder.forEach((name) => {
+        html += charString.replaceAll('character', name);
+    })
 
-    let onCharClick = function (evt) {
-        let char = $(evt.target);
-        activeChars[char.prop('id')] = char.prop('checked');
-    };
+    charsDiv.html(html);
+}
 
-    let onReset = function () {
-        resetBtn.hide();
-        otherNightBtn.hide();
-        firstNightBtn.show();
-        timer.stopTimer();
+let onCharClick = function (evt) {
+    let char = $(evt.target);
+    activeChars[char.prop('id')] = char.prop('checked');
+};
 
-        $('.characters_list input[type="checkbox"]').each((_, element) => {
-            $(element).prop('checked', startChars[$(element).prop('id')]);
-        });
-    };
+let onReset = function () {
+    resetBtn.hide();
+    otherNightBtn.hide();
+    firstNightBtn.show();
+    gameTips.hide();
+    timer.stopTimer();
 
-    let onFirstNight = function () {
-        otherNightBtn.show();
-        resetBtn.show();
-        firstNightBtn.hide();
+    $('.characters_list input[type="checkbox"]').each((_, element) => {
+        $(element).prop('checked', startChars[$(element).prop('id')]);
+    });
+};
 
-        startChars = { ...activeChars };
-        runNight(true);
-        runDay();
-    };
+let onFirstNight = function () {
+    otherNightBtn.show();
+    resetBtn.show();
+    firstNightBtn.hide();
 
-    let onNight = function () {
-        runNight();
-        runDay();
-    };
+    startChars = { ...activeChars };
+    runNight(true);
+    runDay();
+};
 
-    let runNight = function (firstNight) {
-        gameTips.show();
-        nightOrder.forEach(name => {
-            if (activeChars[name]) {
-                if (firstNight || !charOptions[name].onlyFirstNight) {
-                    gameTips.html(name);
-                    timer.startTimer(30, timerElem);
-                    sound.play();
-                }
+let onNight = function () {
+    runNight();
+    runDay();
+};
+
+let runNight = function (firstNight) {
+    gameTips.html('').show();
+    sound.play('introduction');
+    nightOrder.forEach(name => {
+        if (activeChars[name]) {
+            if (firstNight || !charOptions[name]?.onlyFirstNight) {
+                gameTips.html(name);
+                timer.startTimer(charOptions[name]?.time ?? 15);
             }
-        });
-    };
+        }
+    });
+};
 
-    let runDay = function () {
-        // TODO Timer
-    }
+let runDay = function () {
+    // TODO Timer
+}
 
-
-
-    init();
-});
+$(init);
