@@ -36,9 +36,7 @@ $(document).ready(() => {
         resetBtn.hide();
         otherNightBtn.hide();
         firstNightBtn.show();
-        timerElem.hide();
         timer.stopTimer();
-
 
         $('.characters_list input[type="checkbox"]').each((_, element) => {
             $(element).prop('checked', startChars[$(element).prop('id')]);
@@ -64,7 +62,7 @@ $(document).ready(() => {
         gameTips.show();
         order.forEach(name => {
             if (activeChars[name]) {
-
+                timer.startTimer(30,timerElem)
                 // TODO play audio
             }
         });

@@ -1,34 +1,39 @@
 var timer = function () {
-    let timerElem, minutes, seconds, timer;
-    function startTimer(seconds, elem) {
+    let timerElem, min, sec, timer;
+    let startTimer = function (seconds, elem) {
+        console.log('timer start');
         timerElem = elem;
-        minutes = parseInt(seconds / 60, 10)
-        seconds = parseInt(seconds % 60, 10);
+        min = parseInt(seconds / 60, 10)
+        sec = parseInt(seconds % 60, 10);
         changeTimer();
     }
 
-    function changeTimer() {
-        timerElem.html(
-            (minutes < 10 ? "0" + minutes : minutes) +
+    let changeTimer = function () {
+        timerElem?.html(
+            (min < 10 ? "0" + min : min) +
             ':' +
-            (seconds < 10 ? "0" + seconds : seconds)
-        );
+            (sec < 10 ? "0" + sec : sec)
+        ).show();
 
-        if (--seconds < 0) {
-            seconds = 59;
-            minutes--
+        console.log('show');
+
+        if (--sec < 0) {
+            sec = 59;
+            min--
         }
 
-        if (minutes >= 0) {
+        if (min >= 0) {
             timer = setTimeout(changeTimer, 1000);
         }
     }
 
-    function stopTimer() {
+    let stopTimer = function () {
         if (timer) {
             clearTimeout(timer);
             timer = false;
         }
+
+        timerElem?.hide();
     }
 
     return {
