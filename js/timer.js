@@ -18,7 +18,7 @@ var timer = function () {
         min = parseInt(seconds / 60, 10)
         sec = parseInt(seconds % 60, 10);
         changeTimer();
-        return new Promise(resolve => setTimeout(resolve, seconds*1000));
+        return new Promise(resolve => setTimeout(resolve, seconds * 1000));
     }
 
     let changeTimer = function () {
@@ -33,9 +33,14 @@ var timer = function () {
             min--
         }
 
+
         if (min >= 0) {
             clearTimeout(timer);
             timer = setTimeout(changeTimer, 1000);
+
+            if (min === 0 && sec === 5) {
+                sound.tickTock();
+            }
         }
     }
 

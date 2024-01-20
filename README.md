@@ -9,5 +9,6 @@ Future things to implement:
 - volume mixer
 - auxiliar text during the night
 - several versions of the same char night part
+- "close your eyes" recordind before the timer's end
 - Settings to turn off background music or narrator
 

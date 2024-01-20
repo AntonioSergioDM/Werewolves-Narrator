@@ -68,7 +68,9 @@ let runNight = async function (firstNight) {
         if (activeChars[name]) {
             if (firstNight || !charOptions[name]?.onlyFirstNight) {
                 gameTips.html(name);
+                sound.play(name);
                 await timer.startTimer(charOptions[name]?.time ?? 15);
+
             }
         }
     }
