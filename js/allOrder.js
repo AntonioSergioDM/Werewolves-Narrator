@@ -39,4 +39,4 @@ var listOrder = [
     'girl',
 ];
 
-var nightOrder = ['werewolves'];
+var nightOrder = ['werewolves','seer'];

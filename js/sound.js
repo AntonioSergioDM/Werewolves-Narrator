@@ -8,10 +8,16 @@ var sound = function () {
         bgAudio.volume = 0.1;
     }
 
-    let play = function (filename) {
+    /**
+     * 
+     * @param {string} filename 
+     * @param {Number} sleep Minimum sleep time
+     * @returns 
+     */
+    let play = async function (filename, sleep) {
         audio = new Audio('audio/' + filename + '.wav');
-
         audio.play();
+        return new Promise(resolve => setTimeout(resolve, Math.min(sleep, (audio.duration)||sleep)*1000));
     }
 
     return {

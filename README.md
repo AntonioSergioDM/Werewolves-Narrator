@@ -6,6 +6,7 @@ Future things to implement:
 - effects on char removal
 - unavailable chars without a narrator
 - mute button (becames a narrator assistant)
+- volume mixer
 - auxiliar text during the night
 - several versions of the same char night part
 - Settings to turn off background music or narrator

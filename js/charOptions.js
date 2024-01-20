@@ -7,7 +7,7 @@ onlyFirstNight: false;
 
 var charOptions = {
     'werewolves': {
-        time: 30
+        time: 3
     },
     'bigbadwolf': {},
     'whitewolf': {},

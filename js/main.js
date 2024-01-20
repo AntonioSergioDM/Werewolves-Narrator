@@ -46,36 +46,40 @@ let onReset = function () {
     });
 };
 
-let onFirstNight = function () {
+let onFirstNight = async function () {
     otherNightBtn.show();
     resetBtn.show();
     firstNightBtn.hide();
 
     startChars = { ...activeChars };
-    runNight(true);
+    await runNight(true);
     runDay();
 };
 
-let onNight = function () {
-    runNight();
+let onNight = async function () {
+    await runNight();
     runDay();
 };
 
-let runNight = function (firstNight) {
-    gameTips.html('').show();
-    sound.play('introduction');
-    nightOrder.forEach(name => {
+let runNight = async function (firstNight) {
+    gameTips.html('The night falls').show();
+    await sound.play('introduction', 5);
+    for (const name of nightOrder){
         if (activeChars[name]) {
             if (firstNight || !charOptions[name]?.onlyFirstNight) {
                 gameTips.html(name);
-                timer.startTimer(charOptions[name]?.time ?? 15);
+                await timer.startTimer(charOptions[name]?.time ?? 15);
             }
         }
-    });
+    }
+
+    gameTips.hide();
 };
 
 let runDay = function () {
-    // TODO Timer
+    gameTips.html('The dawn breaks').show();
+    sound.play('introduction');
+    timer.startTimer(20);
 }
 
 $(init);

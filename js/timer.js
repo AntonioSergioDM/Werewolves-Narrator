@@ -1,10 +1,24 @@
 var timer = function () {
     let timerElem, min, sec, timer;
-    let startTimer = function (seconds, elem) {
+
+    /**
+     * @param {JQuery} elem 
+     */
+    let setTimerElem = function (elem) {
         timerElem = elem;
+    }
+
+    /**
+     * @param {Number} seconds 
+     * @param {JQuery} elem Optional if setTimerElem has already been used.
+     */
+    let startTimer = async function (seconds, elem) {
+        elem && setTimerElem(elem);
+
         min = parseInt(seconds / 60, 10)
         sec = parseInt(seconds % 60, 10);
         changeTimer();
+        return new Promise(resolve => setTimeout(resolve, seconds*1000));
     }
 
     let changeTimer = function () {
@@ -35,6 +49,7 @@ var timer = function () {
     }
 
     return {
+        setTimerElem: setTimerElem,
         startTimer: startTimer,
         stopTimer: stopTimer
     };
