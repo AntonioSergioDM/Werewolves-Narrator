@@ -13,6 +13,7 @@ $(document).ready(() => {
         firstNightBtn.on('click', onFirstNight);
         otherNightBtn.on('click', onNight);
         resetBtn.on('click', onReset);
+        // sound.background();
         loadChars();
     };
 
@@ -63,8 +64,9 @@ $(document).ready(() => {
         nightOrder.forEach(name => {
             if (activeChars[name]) {
                 if (firstNight || !charOptions[name].onlyFirstNight) {
-                // TODO play audio
+                    gameTips.html(name);
                     timer.startTimer(30, timerElem);
+                    sound.play();
                 }
             }
         });
