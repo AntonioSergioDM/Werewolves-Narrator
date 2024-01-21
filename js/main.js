@@ -1,4 +1,4 @@
-let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars;
+let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars, nightCounter = 0;
 
 let init = function () {
     charsDiv = $('#characters');
@@ -41,6 +41,8 @@ let onReset = function () {
     gameTips.hide();
     timer.stopTimer();
 
+    nightCounter = 0;
+
     $('.characters_list input[type="checkbox"]').each((_, element) => {
         $(element).prop('checked', startChars[$(element).prop('id')]);
     });
@@ -52,24 +54,32 @@ let onFirstNight = async function () {
     firstNightBtn.hide();
 
     startChars = { ...activeChars };
-    await runNight(true);
-    runDay();
+    onNight();
 };
 
 let onNight = async function () {
+    otherNightBtn.prop('disabled', true);
     await runNight();
-    runDay();
+    await runDay();
+    
+    otherNightBtn.prop('disabled', false);
 };
 
-let runNight = async function (firstNight) {
+let runNight = async function () {
+    nightCounter++;
     gameTips.html('The night falls').show();
     await sound.play('introduction', 5);
-    for (const name of nightOrder){
+    for (const name of nightOrder) {
         if (activeChars[name]) {
-            if (firstNight || !charOptions[name]?.onlyFirstNight) {
+            const character = charOptions[name] ?? {};
+
+            if (
+                !(nightCounter !== 1 && character.onlyFirstNight) // some charatecters only wake on first night
+                && (nightCounter % (character.wakesOnEvery ?? 1) === 0) // some charatecters only wake every X nights
+            ) {
                 gameTips.html(name);
                 sound.play(name);
-                await timer.startTimer(charOptions[name]?.time ?? 15);
+                await timer.startTimer(character.time ?? 15);
 
             }
         }
@@ -78,10 +88,14 @@ let runNight = async function (firstNight) {
     gameTips.hide();
 };
 
-let runDay = function () {
+let runDay = async function () {
     gameTips.html('The dawn breaks').show();
     sound.play('introduction');
     timer.startTimer(20);
+
+    if (nightCounter === 2) {
+        // TODO Sheriff
+    }
 }
 
 $(init);

@@ -1,8 +1,10 @@
 /*
 Programed options and its defaults
 
-time: 15;
-onlyFirstNight: false;
+time: 15,
+onlyFirstNight: false,
+wakesOnEvery: 1, // wakes every X nights
+requiresModerator: false,
  */
 
 var charOptions = {
@@ -10,7 +12,9 @@ var charOptions = {
         time: 3
     },
     'bigbadwolf': {},
-    'whitewolf': {},
+    'whitewolf': {
+        wakesOnEvery: 2
+    },
     'wolffather': {},
     'wolfhound': {},
     'wildchild': {},
@@ -19,7 +23,7 @@ var charOptions = {
     'witch': {
         time:20
     },
-    'elder': {},
+    'elder': {requiresModerator: true,},
 
     'thief': {onlyFirstNight: true},
     'cupid': {
@@ -34,13 +38,13 @@ var charOptions = {
 
     'defender': {},
     'gypsy': {},
-    'judge': {},
+    'judge': {requiresModerator: true,},
     'knight': {},
     'pyromaniac': {},
     'scandalmonger': {},
     'scapegoat': {},
 
-    'beartamer': {},
+    'beartamer': {onlyFirstNight: true},
     'fox': {},
 
     'actor': {},

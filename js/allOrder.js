@@ -39,4 +39,38 @@ var listOrder = [
     'girl',
 ];
 
-var nightOrder = ['werewolves','seer'];
+var nightOrder = [
+    'thief',
+    'actor',
+    'cupid',
+    'seer',
+    'fox',
+    'judge',
+    'sisters',
+    'brothers',
+    'wildchild',
+    'beartamer',
+    'scandalmonger',
+    'pyromaniac',
+    'defender',
+    'wolffather',
+    'werewolves',
+    'girl',
+    'whitewolf',
+    'bigbadwolf',
+    'witch',
+    'gypsy',
+    'piper',
+
+    'elder',
+
+    'villager',
+    'hunter',
+    'idiot',
+    'wolfhound',
+    'knight',
+    'scapegoat',
+    'angel',
+    'manipulator',
+    'servant',
+];

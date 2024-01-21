@@ -11,4 +11,6 @@ Future things to implement:
 - several versions of the same char night part
 - "close your eyes" recordind before the timer's end
 - Settings to turn off background music or narrator
+- Settings to change char options
+- Settings to change default time(? - may not play well with the recordings)
 
