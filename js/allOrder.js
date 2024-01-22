@@ -62,15 +62,15 @@ var nightOrder = [
     'gypsy',
     'piper',
 
-    'elder',
+    'elder', // can be played without narrator with minor adjustments(waking every night)
 
-    'villager',
-    'hunter',
-    'idiot',
-    'wolfhound',
-    'knight',
-    'scapegoat',
-    'angel',
-    'manipulator',
-    'servant',
+    // 'villager',
+    // 'hunter',
+    // 'idiot',
+    // 'wolfhound',
+    // 'knight',
+    // 'scapegoat',
+    // 'angel',
+    // 'manipulator',
+    // 'servant',
 ];

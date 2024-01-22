@@ -23,7 +23,7 @@ var charOptions = {
     'witch': {
         time:20
     },
-    'elder': {requiresModerator: true,},
+    'elder': {requiresModerator: true,}, // can be played without with minor adjustments
 
     'thief': {onlyFirstNight: true},
     'cupid': {
@@ -36,16 +36,16 @@ var charOptions = {
     'hunter': {},
     'idiot': {},
 
-    'defender': {},
-    'gypsy': {},
+    'defender': {requiresModerator: true,},
+    'gypsy': {requiresModerator: true,}, // can be played without with minor adjustments
     'judge': {requiresModerator: true,},
-    'knight': {},
+    'knight': {requiresModerator: true,}, // until the on dead events take place
     'pyromaniac': {},
     'scandalmonger': {},
     'scapegoat': {},
 
     'beartamer': {onlyFirstNight: true},
-    'fox': {},
+    'fox': {requiresModerator: true,},
 
     'actor': {},
     'angel': {},
