@@ -67,7 +67,7 @@ let onNight = async function () {
 
 let runNight = async function () {
     nightCounter++;
-    gameTips.html('The night falls').show();
+    gameTips.html(tips.nightFall()).show();
     await sound.play('introduction', 5);
     for (const name of nightOrder) {
         if (activeChars[name]) {
@@ -89,13 +89,17 @@ let runNight = async function () {
 };
 
 let runDay = async function () {
-    gameTips.html('The dawn breaks').show();
+    gameTips.html(tips.dawn()).show();
     sound.play('introduction');
     timer.startTimer(20);
-
-    if (nightCounter === 2) {
-        // TODO Sheriff
+    gameTips.html(tips.deadReveal());
+    if (nightCounter === 2) { // let's vote for a xeriff
+        gameTips.html(tips.xeriffVote);
     }
+    gameTips.html(tips.discussion());
+    gameTips.html(tips.votingTips());
+
+}
 }
 
 $(init);
