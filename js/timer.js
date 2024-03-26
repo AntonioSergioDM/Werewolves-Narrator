@@ -58,4 +58,4 @@ var timer = function () {
         startTimer: startTimer,
         stopTimer: stopTimer
     };
-}()
+}();

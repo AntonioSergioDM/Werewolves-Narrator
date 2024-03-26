@@ -6,3 +6,10 @@ body {
 .timer {
   font-size: xx-large;
 }
+
+.gameTips {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    font-family: sans; color: white;
+    font-size: large;
+}
