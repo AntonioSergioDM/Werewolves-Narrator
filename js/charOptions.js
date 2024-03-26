@@ -1,7 +1,7 @@
 /*
 Programed options and its defaults
 
-time: 15,
+time: settings.nightDefaultTime,
 onlyFirstNight: false,
 wakesOnEvery: 1, // wakes every X nights
 requiresModerator: false,

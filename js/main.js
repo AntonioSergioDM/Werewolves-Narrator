@@ -6,6 +6,7 @@ let init = function () {
     otherNightBtn = $('#otherNight');
     gameTips = $('#gameTips');
     resetBtn = $('#reset');
+    nextBtn = $('#next');
     startChars = {};
     activeChars = {};
 
@@ -14,7 +15,16 @@ let init = function () {
     otherNightBtn.on('click', onNight);
     resetBtn.on('click', onReset);
     timer.setTimerElem($('#timer'));
-    // sound.background();
+
+    if (settings.backgroundMusic) {
+        sound.background();
+    }
+
+    if (!settings.automode) {
+        nextBtn.show();
+        nextBtn.on('click', () => next = true);
+    }
+
     loadChars();
 };
 
@@ -61,14 +71,18 @@ let onNight = async function () {
     otherNightBtn.prop('disabled', true);
     await runNight();
     await runDay();
-    
+
     otherNightBtn.prop('disabled', false);
 };
 
 let runNight = async function () {
     nightCounter++;
     gameTips.html(tips.nightFall()).show();
-    await sound.play('introduction', 5);
+    if (settings.sound) {
+        await sound.play('introduction', 5);
+    } else {
+        await timer.startTimer(1);
+    }
     for (const name of nightOrder) {
         if (activeChars[name]) {
             const character = charOptions[name] ?? {};
@@ -78,9 +92,12 @@ let runNight = async function () {
                 && (nightCounter % (character.wakesOnEvery ?? 1) === 0) // some charatecters only wake every X nights
             ) {
                 gameTips.html(name);
-                sound.play(name);
-                await timer.startTimer(character.time ?? 15);
 
+                if (settings.sound) {
+                    sound.play(name);
+                }
+
+                await waitFor(character.time ?? settings.nightDefaultTime);
             }
         }
     }
@@ -90,16 +107,45 @@ let runNight = async function () {
 
 let runDay = async function () {
     gameTips.html(tips.dawn()).show();
-    sound.play('introduction');
-    timer.startTimer(20);
-    gameTips.html(tips.deadReveal());
-    if (nightCounter === 2) { // let's vote for a xeriff
-        gameTips.html(tips.xeriffVote);
+    if (settings.sound) {
+        await sound.play('introduction');
+    } else {
+        await timer.startTimer(1);
     }
+
+    gameTips.html(tips.deadReveal());
+    await waitFor(settings.discussTime);
+
+    if (nightCounter === 2) { // let's vote for a xeriff
+        gameTips.html(tips.xeriffVote());
+        await waitFor(settings.discussTime);
+    }
+
     gameTips.html(tips.discussion());
+    await waitFor(settings.discussTime);
+
     gameTips.html(tips.votingTips());
+    await waitFor(settings.discussTime);
 
 }
-}
+
+
+const timeout = async ms => new Promise(res => setTimeout(res, ms));
+let next = false; // this is to be changed on user input
+
+let waitNextClick = async function () {
+    next = false; // reset var
+    while (next === false) await timeout(50); // pauses script
+};
+
+let waitFor = async function (time) {
+    if (!settings.automode) {
+        timer.startTimer(time);
+        await waitNextClick();
+        timer.stopTimer();
+    } else {
+        await timer.startTimer(time);
+    }
+};
 
 $(init);
