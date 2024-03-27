@@ -29,6 +29,7 @@ let drawSettings = function () {
     str += "</ul>";
 
     settingsHolder.html(str);
+    onSettingChange();
 };
 
 let onSettingChange = function () {
@@ -36,7 +37,14 @@ let onSettingChange = function () {
         settings[elem.name] = elem.type === 'checkbox' ? elem.checked : parseInt(elem.value);
     });
 
-    console.log(settings);
+    if (settings.backgroundMusic) {
+        sound.background();
+    } else {
+        sound.backgroundStop();
+    }
+    if (!settings.sound) {
+        sound.stop();
+    }
 };
 
 var initSettings = function () {

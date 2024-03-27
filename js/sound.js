@@ -6,11 +6,20 @@ var sound = function () {
         bgAudio.loop = true;
         bgAudio.autoplay = true;
         bgAudio.volume = 0.1;
-    }
+    };
+
+    let backgroundStop = function() {
+        bgAudio?.pause();
+        bgAudio?.currentTime = 0;
+    };
 
     let tickTock = function() {
         tickAudio = tickAudio || new Audio('audio/tick_tock.mp3');
         tickAudio.play();
+    };
+
+    let stop = function () {
+        audio?.pause();
     }
 
     /**
@@ -20,14 +29,17 @@ var sound = function () {
      * @returns 
      */
     let play = async function (filename, sleep) {
+        stop();
         audio = new Audio('audio/' + (filename||'introduction') + '.wav');
         audio.play();
         return new Promise(resolve => setTimeout(resolve, Math.min(sleep, (audio.duration)||sleep)*1000));
-    }
+    };
 
     return {
         play: play,
+        stop: stop,
         background: background,
-        tickTock: tickTock
-    }
+        backgroundStop: backgroundStop,
+        tickTock: tickTock,
+    };
 }();

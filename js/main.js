@@ -17,10 +17,6 @@ let init = function () {
     resetBtn.on('click', onReset);
     timer.setTimerElem($('#timer'));
 
-    if (settings.backgroundMusic) {
-        sound.background();
-    }
-
     if (!settings.automode) {
         nextBtn.show();
         nextBtn.on('click', () => next = true);
