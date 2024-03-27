@@ -48,6 +48,7 @@ let onReset = function () {
     resetBtn.hide();
     otherNightBtn.hide();
     firstNightBtn.show();
+    charsDiv.removeClass('hide_inactive');
     gameTips.hide();
     timer.stopTimer();
 
@@ -62,6 +63,7 @@ let onFirstNight = async function () {
     otherNightBtn.show();
     resetBtn.show();
     firstNightBtn.hide();
+    charsDiv.addClass('hide_inactive');
 
     startChars = { ...activeChars };
     onNight();

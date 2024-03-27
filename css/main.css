@@ -13,3 +13,7 @@ body {
     font-family: sans; color: white;
     font-size: large;
 }
+
+.characters_list.hide_inactive li:has(input:not(:checked)) {
+  display: none;
+}
