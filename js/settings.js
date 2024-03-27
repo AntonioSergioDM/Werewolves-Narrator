@@ -1,9 +1,9 @@
 var settings = {
-    backgroundMusic: false,
+    backgroundMusic: true,
     sound: false,
     automode: false,
-    discussTime: 1,
-    nightDefaultTime: 1,
+    discussTime: 60,
+    nightDefaultTime: 15,
 };
 
 let settingsHolder;
