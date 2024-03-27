@@ -1,6 +1,8 @@
 body {
   background-image: url("../img/bg.jpg");
   background-size: cover;
+  display: flex;
+  justify-content: space-between;
 }
 
 .timer {
@@ -10,10 +12,39 @@ body {
 .gameTips {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
-    font-family: sans; color: white;
-    font-size: large;
+  font-family: sans;
+  color: white;
+  font-size: large;
 }
 
-.characters_list.hide_inactive li:has(input:not(:checked)) {
-  display: none;
+.settings {
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+
+  
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+  font-family: sans;
+  color: white;
+  font-size: large;
+}
+
+.settings div {
+  padding: 2rem;
+  width: fit-content;
+}
+
+.settings ul {
+  list-style-type: none;
+}
+
+.settings li {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.settings li span{
+  white-space: nowrap;
 }
