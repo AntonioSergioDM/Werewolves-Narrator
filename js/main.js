@@ -1,6 +1,7 @@
 let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars, nightCounter = 0;
 
 let init = function () {
+    initSettings();
     charsDiv = $('#characters');
     firstNightBtn = $('#firstNight');
     otherNightBtn = $('#otherNight');

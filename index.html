@@ -24,31 +24,38 @@
     <script type="text/javascript" src='js/allOrder.js'></script>
     <script type="text/javascript" src='js/charOptions.js'></script>
     <script type="text/javascript" src='js/tips.js'></script>
-    
+
     <script type="text/javascript" src='js/main.js'></script>
 </head>
 
 <body>
-    <h1>Werewolves of Miller's Hollow</h1>
-    <ul id="characters" class="characters_list">
-        <li>
-            <input type="checkbox" id="character">
-            <label for="character">
-                <img src="img/chars/character.png" />
-            </label>
-        </li>
-    </ul>
-    <div id="gameTips" class="gameTips" style="display: none;">
-
-    </div>
-    <div id="timer" class="timer" style="display: none;">
-
-    </div>
     <div>
-        <button id="firstNight" class="button">First Night</button>
-        <button id="reset" class="button" style="display: none;">Reset</button>
-        <button id="otherNight" class="button" style="display: none;">Night</button>
-        <button id="next" class="button" style="display: none;">Next</button>
+        <h1>Werewolves of Miller's Hollow</h1>
+        <ul id="characters" class="characters_list">
+            <li>
+                <input type="checkbox" id="character">
+                <label for="character">
+                    <img src="img/chars/character.png" />
+                </label>
+            </li>
+        </ul>
+        <div id="gameTips" class="gameTips" style="display: none;">
+
+        </div>
+        <div id="timer" class="timer" style="display: none;">
+
+        </div>
+        <div>
+            <button id="firstNight" class="button">First Night</button>
+            <button id="reset" class="button" style="display: none;">Reset</button>
+            <button id="otherNight" class="button" style="display: none;">Night</button>
+            <button id="next" class="button" style="display: none;">Next</button>
+        </div>
+    </div>
+
+    <div class="settings">
+        <img id="settingsIcon" src="img/settings.svg" alt="settings" />
+        <div id="settingsHolder" style="display: none;"></div>
     </div>
 </body>
 
