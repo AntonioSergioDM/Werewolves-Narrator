@@ -38,12 +38,12 @@ let onSettingChange = function () {
     });
 
     if (settings.backgroundMusic) {
-        sound.background();
+        sound?.background();
     } else {
-        sound.backgroundStop();
+        sound?.backgroundStop();
     }
     if (!settings.sound) {
-        sound.stop();
+        sound?.stop();
     }
 };
 

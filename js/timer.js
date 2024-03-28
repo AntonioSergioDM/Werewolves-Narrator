@@ -39,7 +39,7 @@ var timer = function () {
             timer = setTimeout(changeTimer, 1000);
 
             if (min === 0 && sec === 5) {
-                sound.tickTock();
+                sound?.tickTock();
             }
         }
     }

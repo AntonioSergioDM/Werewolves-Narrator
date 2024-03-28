@@ -10,7 +10,6 @@ var sound = function () {
 
     let backgroundStop = function() {
         bgAudio?.pause();
-        bgAudio?.currentTime = 0;
     };
 
     let tickTock = function() {
