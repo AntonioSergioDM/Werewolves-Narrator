@@ -27,8 +27,14 @@ var charOptions = {
 
     'thief': {onlyFirstNight: true},
     'cupid': {
-        time: 30,
-        onlyFirstNight: true
+        time: 15,
+        onlyFirstNight: true,
+        requiresModerator: true, // can be played without with minor adjustments
+    },
+    'lovers': { // It's a gain attribute
+        time: 15,
+        onlyFirstNight: true,
+        requiresModerator: true, // can be played without with minor adjustments
     },
     'brothers': {},
     'sisters': {},
@@ -38,7 +44,10 @@ var charOptions = {
 
     'defender': {requiresModerator: true,},
     'gypsy': {requiresModerator: true,}, // can be played without with minor adjustments
-    'judge': {requiresModerator: true,},
+    'judge': {
+        requiresModerator: true,
+        onlyFirstNight: true,
+    },
     'knight': {requiresModerator: true,}, // until the on dead events take place
     'pyromaniac': {},
     'scandalmonger': {},

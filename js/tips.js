@@ -26,8 +26,8 @@ var tips = {
             str += "<li>If the elder was killed by the wolfs, he may survive once</li>";
         }
 
-        if (startChars.cupid) {
-            str += "<li>A lonely Lover takes is own life out of heatbreak</li>";
+        if (activeChars.lovers) {
+            str += "<li>A lonely Lover takes is own life out of heatbreak (<span style=\"text-decoration: underline;\" onClick=\"activeChars['lovers']=false;$(this).closest('li').hide();\">Remove Lovers</span>)</li>";
         }
 
         return str + '</ul>';
@@ -38,12 +38,18 @@ var tips = {
 
         if (activeChars.idiot) {
             str += "<li>If the idiot has already been revealed, he cannot vote</li>";
-            str += "<li>If the idiot is voted, he reveals is card but stays alive as a simple villager</li>";
+            str += "<li>If the idiot is voted, he reveals his card but stays alive as a simple villager</li>";
         }
 
         if (nightCounter >= 2) {
             str += "<li>The xeriff vote counts double</li>";
         }
+
+        if (activeChars.judge) {
+            str += "<li>The judge may call for an extra vote</li>";
+        }
+
+        //scapegoat
 
         return str + '</ul>';
     },

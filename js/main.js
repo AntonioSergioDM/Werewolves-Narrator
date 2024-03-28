@@ -39,6 +39,10 @@ let loadChars = function () {
 let onCharClick = function (evt) {
     let char = $(evt.target);
     activeChars[char.prop('id')] = char.prop('checked');
+
+    if (char.prop('id') === 'cupid') {
+        activeChars['lovers'] = char.prop('checked');
+    }
 };
 
 let onReset = function () {
