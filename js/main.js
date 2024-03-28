@@ -72,7 +72,11 @@ let onFirstNight = async function () {
 
 let onNight = async function () {
     otherNightBtn.prop('disabled', true);
-    await runNight();
+
+    if (!activeChars['angel']) {
+        await runNight();
+    }
+    
     await runDay();
 
     otherNightBtn.prop('disabled', false);

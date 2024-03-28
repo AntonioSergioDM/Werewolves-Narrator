@@ -16,6 +16,8 @@ var tips = {
     },
     
     deadReveal: function () {
+        // angel (before firstNight)
+
         let str = 'Some people are found dead' + '<ul>';
 
         if (activeChars.hunter) {
@@ -49,7 +51,9 @@ var tips = {
             str += "<li>The judge may call for an extra vote</li>";
         }
 
-        //scapegoat
+        // scapegoat
+
+        // devouted servant
 
         return str + '</ul>';
     },
