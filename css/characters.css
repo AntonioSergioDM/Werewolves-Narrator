@@ -14,7 +14,7 @@ ul.characters_list.hide_inactive li:has(input:not(:checked)) {
   display: none;
 }
 
-label {
+ul.characters_list label {
   height: 100px;
   /*This shouldn't be here */
   border: 1px solid #fff;
@@ -32,7 +32,7 @@ label {
   z-index: 2;
 }
 
-label::before {
+ul.characters_list label::before {
   content: " ";
   display: block;
   border-radius: 50%;
@@ -49,7 +49,7 @@ label::before {
   z-index: 3;
 }
 
-label img {
+ul.characters_list label img {
   border-radius: 10%;
   height: 100px;
   width: 100px;
@@ -57,17 +57,17 @@ label img {
   transform-origin: 50% 50%;
 }
 
-:checked+label {
+ul.characters_list :checked+label {
   border-color: #ddd;
 }
 
-:checked+label::before {
+ul.characters_list :checked+label::before {
   content: "✓";
   background-color: rgb(255, 255, 255);
   transform: scale(1);
 }
 
-:checked+label img {
+ul.characters_list :checked+label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
 }

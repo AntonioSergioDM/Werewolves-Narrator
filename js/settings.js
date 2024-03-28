@@ -14,28 +14,34 @@ let camelCaseToWords = function (s) {
 }
 
 let drawSettings = function () {
-    let str = "<ul>";
+    let str = '<ul>';
     for (const setting of Object.keys(settings)) {
         str += '<li>'
             + '     <span>' + camelCaseToWords(setting) + '</span>'
-            + '     <span>'
-            + '         <input type="' + (typeof settings[setting] == "boolean" ? 'checkbox' : 'number') + '"'
-            + '                name="' + setting + '"'
-            + '                value="' + settings[setting] + '"' + (typeof settings[setting] == "boolean" &&  settings[setting]? 'checked' : '') + '/>'
-            + '     </span>'
-            + ' </li>';
+            + '     <span>';
+
+        if (typeof settings[setting] == "boolean") {
+            str += ''
+                + '<label class="switch">'
+                + '  <input type="checkbox" name="' + setting + '" ' + (settings[setting]? 'checked' : '') +'>'
+                + '  <span class="slider"></span>'
+                + '</label>';
+        } else {
+            str += '<input type="number" name="' + setting + '" value="' + settings[setting] + '"/>'
+        }
+        
+        str += '   </span>'
+            + '</li>';
     }
 
-    str += ''
-        + '<li>'
-        + '     <span></span>'
-        + '     <button id="back2game" class="button">Go back</button>'
-        + '     <span></span>'
-        + '</li>'
+    str += '   <li>'
+        + '       <span></span>'
+        + '       <button id="back2game" class="button">Go back</button>'
+        + '       <span></span>'
+        + '    </li>'
         + '</ul>';
 
     settingsHolder.html(str);
-    onSettingChange();
 };
 
 let onSettingChange = function () {
@@ -48,6 +54,7 @@ let onSettingChange = function () {
     } else {
         sound?.backgroundStop();
     }
+
     if (!settings.sound) {
         sound?.stop();
     }
@@ -61,8 +68,10 @@ let toogleSettings = function() {
 var initSettings = function () {
     settingsHolder = $('#settingsHolder');
     contentHolder = $('#content');
+
+    onSettingChange();
     drawSettings();
+
     $('#settingsIcon, #back2game').on('click', toogleSettings);
     settingsHolder.on('change', onSettingChange);
-
 };

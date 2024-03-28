@@ -5,12 +5,9 @@ Future things to implement:
 - name on char hover
 - effects on char removal
 - unavailable chars without a narrator
-- mute button (becames a narrator assistant)
 - volume mixer
 - auxiliar text during the night
 - several versions of the same char night part
 - "close your eyes" recordind before the timer's end
-- Settings to turn off background music or narrator
 - Settings to change char options
-- Settings to change default time(? - may not play well with the recordings)
 
