@@ -2,6 +2,11 @@ var sound = function () {
     let audio, bgAudio, tickAudio;
 
     let background = function () {
+        if (bgAudio) {
+            bgAudio.play();
+            return;
+        }
+        
         bgAudio = new Audio('audio/bg_music.mp3');
         bgAudio.loop = true;
         bgAudio.autoplay = true;
