@@ -6,7 +6,7 @@ var settings = {
     nightDefaultTime: 15,
 };
 
-let settingsHolder;
+let settingsHolder, contentHolder;
 
 let camelCaseToWords = function (s) {
     const result = s.replace(/([A-Z])/g, ' $1');
@@ -26,7 +26,13 @@ let drawSettings = function () {
             + ' </li>';
     }
 
-    str += "</ul>";
+    str += ''
+        + '<li>'
+        + '     <span></span>'
+        + '     <button id="back2game" class="button">Go back</button>'
+        + '     <span></span>'
+        + '</li>'
+        + '</ul>';
 
     settingsHolder.html(str);
     onSettingChange();
@@ -47,10 +53,16 @@ let onSettingChange = function () {
     }
 };
 
+let toogleSettings = function() {
+    settingsHolder.toggle();
+    contentHolder.toggle();
+};
+
 var initSettings = function () {
     settingsHolder = $('#settingsHolder');
-    $('#settingsIcon').on('click', () => settingsHolder.toggle());
+    contentHolder = $('#content');
     drawSettings();
+    $('#settingsIcon, #back2game').on('click', toogleSettings);
     settingsHolder.on('change', onSettingChange);
 
 };
