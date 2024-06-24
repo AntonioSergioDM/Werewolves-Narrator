@@ -6,6 +6,7 @@ let init = function () {
     firstNightBtn = $('#firstNight');
     otherNightBtn = $('#otherNight');
     gameTips = $('#gameTips');
+    gameImgs = $('#gameImgs');
     resetBtn = $('#reset');
     nextBtn = $('#next');
     startChars = {};
@@ -104,12 +105,15 @@ let runNight = async function () {
                     sound.play(name);
                 }
 
+                gameImgs.html($('#'+ name +'Img')?.clone() || '');
+
                 await waitFor(character.time ?? settings.nightDefaultTime);
             }
         }
     }
 
     gameTips.hide();
+    gameImgs.html('');
 };
 
 let runDay = async function () {

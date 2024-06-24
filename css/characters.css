@@ -71,3 +71,16 @@ ul.characters_list :checked+label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
 }
+
+.gameImgs {
+  display: flex;
+  gap: 10px;
+}
+
+.gameImgs img{
+  border-radius: 10%;
+  height: 100px;
+  width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
