@@ -104,7 +104,7 @@ let runNight = async function () {
         await timer.startTimer(1);
     }
     for (const name of nightOrder) {
-        if (activeChars[name]) {
+        if (activeChars[name] || name === 'werewolves') {
             const character = charOptions[name] ?? {};
 
             if (
