@@ -16,9 +16,15 @@ var tips = {
     },
 
     deadReveal: function () {
-        // angel (before firstNight)
-
+        if (nightCounter === 0) {
+            return 'The presence of the Angels forces a vote before the first night';
+        }
         let str = 'Some people are found dead' + '<ul>';
+
+        if (nightCounter === 1 && activeChars.angel) {
+            str += "<li>If the Angel died, he wakes up and wins the game</li>";
+        }
+
 
         if (activeChars.hunter) {
             str += "<li>If the hunter didn't die by the witch, he must shoot NOW!</li>";
@@ -37,6 +43,10 @@ var tips = {
 
     votingTips: function () {
         let str = 'The village must vote a suspect to take the blame' + '<ul>';
+
+        if (nightCounter === 0 && activeChars.angel) {
+            str += "<li>If the Angel died, he wakes up and wins the game</li>";
+        }
 
         if (nightCounter >= 2) {
             str += "<li>The xeriff vote counts double</li>";

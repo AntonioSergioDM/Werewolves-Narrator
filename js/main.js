@@ -43,8 +43,14 @@ let onCharClick = function (evt) {
     let char = $(evt.target);
     activeChars[char.prop('id')] = char.prop('checked');
 
+    // add lovers
     if (char.prop('id') === 'cupid') {
         activeChars['lovers'] = char.prop('checked');
+    }
+
+    // start with day if angel
+    if (char.prop('id') === 'angel') {
+        nightCounter = -1 * char.prop('checked');
     }
 };
 
@@ -77,10 +83,13 @@ let onFirstNight = async function () {
 let onNight = async function () {
     otherNightBtn.prop('disabled', true);
 
-    if (!activeChars['angel']) {
+    if (nightCounter > -1) {
         await runNight();
+    } else {
+        // skip first night if angel is in play
+        nightCounter = 0;
     }
-    
+
     await runDay();
 
     otherNightBtn.prop('disabled', false);
@@ -131,7 +140,7 @@ let runDay = async function () {
     await waitFor(settings.discussTime);
 
     // let's vote for a xeriff
-    if (nightCounter === 2) { 
+    if (nightCounter === 2) {
         gameTips.html(tips.xeriffVote());
         await waitFor(settings.discussTime);
     }
@@ -141,7 +150,6 @@ let runDay = async function () {
 
     gameTips.html(tips.votingTips());
     await waitFor(settings.discussTime);
-
 };
 
 
