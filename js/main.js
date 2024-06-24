@@ -52,6 +52,7 @@ let onReset = function () {
     firstNightBtn.show();
     charsDiv.removeClass('hide_inactive');
     gameTips.hide();
+    gameImgs.html('');
     timer.stopTimer();
 
     nightCounter = 0;
