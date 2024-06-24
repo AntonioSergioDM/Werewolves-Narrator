@@ -7,15 +7,16 @@ var tips = {
         return "The dawn breaks";
     },
 
-    xeriffVote: function () {
-        return "The village chooses a xeriff";
-    },
-
     discussion: function () {
         if (nightCounter === 0) {
             return 'The Angel wants to wake up';
         }
-        
+
+        // let's vote for a xeriff
+        if (nightCounter === 2) {
+            return "The village chooses a xeriff";
+        }
+
         return "The village talks about last night events";
     },
 
@@ -94,12 +95,12 @@ var tips = {
 
                 str += '<li>All werewolves wake up</li>';
 
-                if (nightCounter===1 && activeChars.wolfhound) {
+                if (nightCounter === 1 && activeChars.wolfhound) {
                     str += '<li>The wolfhound chooses if he becomes a wolf</li>';
                 } else if (activeChars.wolfhound) {
                     str += '<li>If the wolfhound chose to be a wolf, wakes up with the wolfs</li>';
                 }
-            
+
                 if (nightCounter > 1 && activeChars.wildchild) {
                     str += '<li>If the wildchild\'s role model is dead, he wakes now</li>';
                 }

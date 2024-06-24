@@ -139,12 +139,6 @@ let runDay = async function () {
     gameTips.html(tips.deadReveal());
     await waitFor(settings.discussTime);
 
-    // let's vote for a xeriff
-    if (nightCounter === 2) {
-        gameTips.html(tips.xeriffVote());
-        await waitFor(settings.discussTime);
-    }
-
     gameTips.html(tips.discussion());
     await waitFor(settings.discussTime);
 
