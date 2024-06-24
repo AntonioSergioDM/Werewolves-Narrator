@@ -12,12 +12,23 @@ var tips = {
             return 'The Angel wants to wake up';
         }
 
-        // let's vote for a xeriff
-        if (nightCounter === 2) {
-            return "The village chooses a xeriff";
+        let str = "The village talks about the last events <ul>";
+
+        if (activeChars.gipsy && medium) {
+            medium = false;
+            str += "<li>The chosen medium asks the chosen question. The narrator chooses a dead player to answer.</li>";
         }
 
-        return "The village talks about last night events";
+        // let's vote for a xeriff
+        if (nightCounter === 2 && activeChars.xeriff) {
+            str += "<li>The village chooses a xeriff.";
+            if (activeChars.towncrier) {
+                str += '<br>The xeriff nominates a Town Crier';
+            }
+            str +="</li>";
+        }
+
+        return str + '</ul>';
     },
 
     deadReveal: function () {
@@ -33,9 +44,9 @@ var tips = {
 
         if (fireball === 0) {
             fireball = -1;
-            str += "<li>The burnt building is discarded."+
-            "<br>If the wolfs picked it's resident as their meal, the werewolf to the right of the victim dies."+
-            "<br>The resident becomes a vagabond</li>";
+            str += "<li>The burnt building is discarded." +
+                "<br>If the wolfs picked it's resident as their meal, the werewolf to the right of the victim dies." +
+                "<br>The resident becomes a vagabond</li>";
         }
 
         if (activeChars.witch) {
@@ -90,7 +101,7 @@ var tips = {
             str += "<li>If the Angel died, he wakes up and wins the game</li>";
         }
 
-        if (nightCounter >= 2) {
+        if (nightCounter >= 2 && activeChars.xeriff) {
             str += "<li>The xeriff vote counts double</li>";
         }
 
@@ -178,8 +189,14 @@ var tips = {
                     str += "<li>May burn a building(<span style=\"text-decoration: underline;\" onClick=\"fireball=fireball-1;$(this).closest('li').hide();\">Set on fire!</span>)</li>";
                 }
 
-                return str +'</ul>';
+                return str + '</ul>';
 
+            case 'gipsy':
+                str = 'Gipsy <ul>';
+
+                str += "<li>Can choose to use it\'s power (<span style=\"text-decoration: underline;\" onClick=\"medium=true;$(this).closest('li').hide();\">Channel the dead</span>)</li>";
+        
+                return str + '</ul>';
             default:
                 return name.charAt(0).toUpperCase() + name.slice(1);
         }

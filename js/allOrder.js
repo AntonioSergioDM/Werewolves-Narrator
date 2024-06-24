@@ -37,6 +37,8 @@ var listOrder = [
     'piper',
     'servant',
     'girl',
+    'xeriff',
+    'towncrier',
 ];
 
 var nightOrder = [

@@ -66,4 +66,6 @@ var charOptions = {
     'girl': {},
     'villager': {},
     'manipulator': {},
+    'xeriff': {},
+    'towncrier': {},
 };
