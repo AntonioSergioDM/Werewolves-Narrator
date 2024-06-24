@@ -48,9 +48,9 @@ let onCharClick = function (evt) {
         activeChars['lovers'] = char.prop('checked');
     }
 
-    // start with day if angel
-    if (char.prop('id') === 'angel') {
-        nightCounter = -1 * char.prop('checked');
+    // start with day if angel is active
+    if (char.prop('id') === 'angel' && char.prop('checked')) {
+        nightCounter = -1 ;
     }
 };
 

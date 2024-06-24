@@ -12,6 +12,10 @@ var tips = {
     },
 
     discussion: function () {
+        if (nightCounter === 0) {
+            return 'The Angel wants to wake up';
+        }
+        
         return "The village talks about last night events";
     },
 
