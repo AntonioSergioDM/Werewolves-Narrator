@@ -1,11 +1,15 @@
 var timer = function () {
-    let timerElem, min, sec, timer;
+    let timerElem, min, sec, timer, ticktock = true;
 
     /**
      * @param {JQuery} elem 
      */
     let setTimerElem = function (elem) {
         timerElem = elem;
+    }
+
+    let setSound = function(sound) {
+        ticktock = sound;
     }
 
     /**
@@ -21,7 +25,7 @@ var timer = function () {
         return new Promise(resolve => setTimeout(resolve, seconds * 1000));
     }
 
-    let changeTimer = function () {
+    let changeTimer = function (ticktock) {
         timerElem?.html(
             (min < 10 ? "0" + min : min) +
             ':' +
@@ -38,7 +42,7 @@ var timer = function () {
             clearTimeout(timer);
             timer = setTimeout(changeTimer, 1000);
 
-            if (min === 0 && sec === 5) {
+            if (ticktock && min === 0 && sec === 5) {
                 sound?.tickTock();
             }
         }
@@ -56,6 +60,7 @@ var timer = function () {
     return {
         setTimerElem: setTimerElem,
         startTimer: startTimer,
-        stopTimer: stopTimer
+        stopTimer: stopTimer,
+        setSound: setSound,
     };
 }();

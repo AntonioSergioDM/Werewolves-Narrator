@@ -58,6 +58,8 @@ let onSettingChange = function () {
     if (!settings.sound) {
         sound?.stop();
     }
+
+    timer?.setSound(settings.sound);
 };
 
 let toogleSettings = function() {
