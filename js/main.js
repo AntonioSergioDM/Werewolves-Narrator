@@ -1,6 +1,4 @@
-let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars;
-let nightCounter = 0;
-let potions = { save: 1, kill: 1 };
+let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars, nightCounter, potions, tetanus;
 
 let init = function () {
     initSettings();
@@ -26,6 +24,7 @@ let init = function () {
     }
 
     loadChars();
+    resetCharAbilities();
 };
 
 let loadChars = function () {
@@ -52,6 +51,17 @@ let onCharClick = function (evt) {
     if (char.prop('id') === 'angel' && char.prop('checked')) {
         nightCounter = -1 ;
     }
+
+    // Knight rusty sword
+    if (char.prop('id') === 'knight' && !char.prop('checked')) {
+        tetanus = nightCounter + 1;
+    }
+};
+
+let resetCharAbilities = function() {
+    nightCounter = 0;
+    potions = { save: 1, kill: 1 };
+    tetanus = -1;
 };
 
 let onReset = function () {
@@ -62,8 +72,6 @@ let onReset = function () {
     gameTips.hide();
     gameImgs.html('');
     timer.stopTimer();
-
-    nightCounter = 0;
 
     $('.characters_list input[type="checkbox"]').each((_, element) => {
         $(element).prop('checked', startChars[$(element).prop('id')]);
@@ -77,6 +85,8 @@ let onFirstNight = async function () {
     charsDiv.addClass('hide_inactive');
 
     startChars = { ...activeChars };
+    resetCharAbilities();
+
     onNight();
 };
 

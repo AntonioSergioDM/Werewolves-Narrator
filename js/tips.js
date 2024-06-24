@@ -24,7 +24,23 @@ var tips = {
         if (nightCounter === 0) {
             return 'The presence of the Angels forces a vote before the first night';
         }
+
         let str = 'Some people are found dead' + '<ul>';
+
+        if (activeChars.knight && tetanus === nightCounter) {
+            str += "<li>The closest werewolf, to the left of the knight dies of disease</li>";
+        }
+
+        if (activeChars.witch) {
+            if (potions.save === 0) {
+                potions.save = -1;
+                str += "<li>The witch saved the werewolf's victim</li>";
+            }
+            if (potions.kill === 0) {
+                potions.kill = -1;
+                str += "<li>The witch poisoned someone</li>";
+            }
+        }
 
         if (nightCounter === 1 && activeChars.angel) {
             str += "<li>If the Angel died, he wakes up and wins the game</li>";
@@ -40,6 +56,17 @@ var tips = {
 
         if (activeChars.elder) {
             str += "<li>If the Elder was killed by the wolfs, he may survive once</li>";
+        }
+
+        if (activeChars.defender) {
+            str += "<li>If the Defender protected the wolf's victim, then the victim survives";
+            if (activeChars.piper) {
+                str += "<br> Doesn't protect against the Piper charm"
+            }
+            if (activeChars.wolffather) {
+                str += "<br> Doesn't protect against the WolfFather infection"
+            }
+            str += "</li>";
         }
 
         if (activeChars.lovers) {
@@ -115,7 +142,7 @@ var tips = {
                 str = 'Witch <ul>';
 
                 str += '<li>May save the wolf victim (';
-                if (potions.save) {
+                if (potions.save > 0) {
                     str += "<span style=\"text-decoration: underline;\" onClick=\"potions['save']=potions.save-1;$(this).closest('li').hide();\">Use potion</span>";
                 } else {
                     str += 'Already used';
@@ -123,7 +150,7 @@ var tips = {
                 str += ')</li>';
 
                 str += '<li>May take a life (';
-                if (potions.kill) {
+                if (potions.kill > 0) {
                     str += "<span style=\"text-decoration: underline;\" onClick=\"potions['kill']=potions.kill-1;$(this).closest('li').hide();\">Use potion</span>";
                 } else {
                     str += 'Already used';
