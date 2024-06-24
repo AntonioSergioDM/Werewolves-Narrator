@@ -94,6 +94,10 @@ var tips = {
             str += "<li>The xeriff vote counts double</li>";
         }
 
+        if (activeChars.scandalmonger) {
+            str += "<li>The Scandalmonger accusation counts as 2 votes</li>";
+        }
+
         if (activeChars.idiot) {
             str += "<li>If the Idiot has already been revealed, he cannot vote<br>If the Idiot is voted, he reveals his card but stays alive as a simple villager</li>";
         }

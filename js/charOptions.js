@@ -23,7 +23,10 @@ var charOptions = {
     'witch': {
         time:20
     },
-    'elder': {requiresModerator: true,}, // can be played without with minor adjustments
+    'elder': {
+        requiresModerator: true, // can be played without with minor adjustments
+        onlyFirstNight: true
+    },
 
     'thief': {onlyFirstNight: true},
     'cupid': {
