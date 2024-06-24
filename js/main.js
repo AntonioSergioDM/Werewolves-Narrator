@@ -1,4 +1,6 @@
-let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars, nightCounter = 0;
+let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars;
+let nightCounter = 0;
+let potions = {save: 1, kill: 1};
 
 let init = function () {
     initSettings();
@@ -108,7 +110,7 @@ let runNight = async function () {
 
                 gameImgs.html($('#'+ name +'Img')?.clone() || '');
 
-                await nightSpecials();
+                await nightSpecials(name);
 
                 await waitFor(character.time ?? settings.nightDefaultTime);
             }
@@ -149,6 +151,7 @@ let nightSpecials = async function(name) {
 
         case 'witch':
             // add potions buttons(tips?)
+            gameTips.html(tips.witchAtNight(potions));
             break;
     }
 }
