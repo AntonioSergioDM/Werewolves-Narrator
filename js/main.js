@@ -1,4 +1,4 @@
-let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars, nightCounter, potions, tetanus;
+let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars, nightCounter, potions, tetanus, fireball;
 
 let init = function () {
     initSettings();
@@ -62,6 +62,7 @@ let resetCharAbilities = function() {
     nightCounter = 0;
     potions = { save: 1, kill: 1 };
     tetanus = -1;
+    fireball = 1;
 };
 
 let onReset = function () {

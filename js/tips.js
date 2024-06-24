@@ -31,6 +31,13 @@ var tips = {
             str += "<li>The closest werewolf, to the left of the knight dies of disease</li>";
         }
 
+        if (fireball === 0) {
+            fireball = -1;
+            str += "<li>The burnt building is discarded."+
+            "<br>If the wolfs picked it's resident as their meal, the werewolf to the right of the victim dies."+
+            "<br>The resident becomes a vagabond</li>";
+        }
+
         if (activeChars.witch) {
             if (potions.save === 0) {
                 potions.save = -1;
@@ -138,7 +145,7 @@ var tips = {
 
                 return str + '</ul>';
 
-            case witch:
+            case 'witch':
                 str = 'Witch <ul>';
 
                 str += '<li>May save the wolf victim (';
@@ -157,6 +164,17 @@ var tips = {
                 }
                 str += ')</li>';
                 return str + '</ul>';
+
+            case 'pyromaniac':
+                str = 'Pyromaniac <ul>';
+
+                if (fireball < 1) {
+                    str += '<li>Already used his power</li>';
+                } else {
+                    str += "<li>May burn a building(<span style=\"text-decoration: underline;\" onClick=\"fireball=fireball-1;$(this).closest('li').hide();\">Set on fire!</span>)</li>";
+                }
+
+                return str +'</ul>';
 
             default:
                 return name.charAt(0).toUpperCase() + name.slice(1);
