@@ -30,11 +30,11 @@ var tips = {
         }
 
         if (activeChars.hunter) {
-            str += "<li>If the hunter didn't die by the witch, he must shoot NOW!</li>";
+            str += "<li>If the Hunter wasn't poisoned by the witch, he must shoot NOW!</li>";
         }
 
         if (activeChars.elder) {
-            str += "<li>If the elder was killed by the wolfs, he may survive once</li>";
+            str += "<li>If the Elder was killed by the wolfs, he may survive once</li>";
         }
 
         if (activeChars.lovers) {
@@ -56,8 +56,9 @@ var tips = {
         }
 
         if (activeChars.idiot) {
-            str += "<li>If the idiot has already been revealed, he cannot vote</li>";
-            str += "<li>If the idiot is voted, he reveals his card but stays alive as a simple villager</li>";
+            str += "<li>If the Idiot has already been revealed, he cannot vote<br>If the Idiot is voted, he reveals his card but stays alive as a simple villager</li>";
+        }
+
         if (activeChars.scapegoat) {
             str += "<li>In case of a tie, the Scapegoat dies. He then chooses who votes the next day</li>";
         }
@@ -71,7 +72,8 @@ var tips = {
         }
 
         if (activeChars.judge) {
-            str += "<li>The judge may call for an extra vote</li>";
+            str += "<li>The Judge may call for an extra vote</li>";
+        }
 
         if (activeChars.piper) {
             str += "<li>If all players are charmed the Piper wins the game</li>";
