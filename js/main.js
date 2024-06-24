@@ -107,6 +107,8 @@ let runNight = async function () {
 
                 gameImgs.html($('#'+ name +'Img')?.clone() || '');
 
+                await nightSpecials();
+
                 await waitFor(character.time ?? settings.nightDefaultTime);
             }
         }
@@ -127,10 +129,7 @@ let runDay = async function () {
     gameTips.html(tips.deadReveal());
     await waitFor(settings.discussTime);
 
-    if (nightCounter === 2) { // let's vote for a xeriff
-        gameTips.html(tips.xeriffVote());
-        await waitFor(settings.discussTime);
-    }
+    await daySpecials();
 
     gameTips.html(tips.discussion());
     await waitFor(settings.discussTime);
@@ -138,6 +137,27 @@ let runDay = async function () {
     gameTips.html(tips.votingTips());
     await waitFor(settings.discussTime);
 
+}
+
+let nightSpecials = async function(name) {
+    switch (name) {
+        case 'werewolves':
+            // add all werewolves (possibly remove simple)
+            // add girl
+            break;
+
+        case 'witch':
+            // add potions buttons(tips?)
+            break;
+    }
+}
+
+let daySpecials = async function () {
+    // let's vote for a xeriff
+    if (nightCounter === 2) { 
+        gameTips.html(tips.xeriffVote());
+        await waitFor(settings.discussTime);
+    }
 }
 
 
