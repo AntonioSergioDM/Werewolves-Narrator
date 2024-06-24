@@ -102,15 +102,13 @@ let runNight = async function () {
                 !(nightCounter !== 1 && character.onlyFirstNight) // some charatecters only wake on first night
                 && (nightCounter % (character.wakesOnEvery ?? 1) === 0) // some charatecters only wake every X nights
             ) {
-                gameTips.html(name);
+                gameTips.html(tips.atNight(name));
+
+                gameImgs.html(tips.atNightImg(name));
 
                 if (settings.sound) {
                     sound.play(name);
                 }
-
-                gameImgs.html($('#'+ name +'Img')?.clone() || '');
-
-                await nightSpecials(name);
 
                 await waitFor(character.time ?? settings.nightDefaultTime);
             }
@@ -132,7 +130,11 @@ let runDay = async function () {
     gameTips.html(tips.deadReveal());
     await waitFor(settings.discussTime);
 
-    await daySpecials();
+    // let's vote for a xeriff
+    if (nightCounter === 2) { 
+        gameTips.html(tips.xeriffVote());
+        await waitFor(settings.discussTime);
+    }
 
     gameTips.html(tips.discussion());
     await waitFor(settings.discussTime);
@@ -140,29 +142,7 @@ let runDay = async function () {
     gameTips.html(tips.votingTips());
     await waitFor(settings.discussTime);
 
-}
-
-let nightSpecials = async function(name) {
-    switch (name) {
-        case 'werewolves':
-            // add all werewolves (possibly remove simple)
-            // add girl
-            break;
-
-        case 'witch':
-            // add potions buttons(tips?)
-            gameTips.html(tips.witchAtNight(potions));
-            break;
-    }
-}
-
-let daySpecials = async function () {
-    // let's vote for a xeriff
-    if (nightCounter === 2) { 
-        gameTips.html(tips.xeriffVote());
-        await waitFor(settings.discussTime);
-    }
-}
+};
 
 
 const timeout = async ms => new Promise(res => setTimeout(res, ms));

@@ -62,26 +62,74 @@ var tips = {
         return str + '</ul>';
     },
 
-    witchAtNight: function (potions) {
-        let str = 'Witch <ul>';
+    atNight: function (name) {
+        let str = '';
+        switch (name) {
+            case 'werewolves':
+                str = 'Werewolves <ul>';
 
-        str += '<li>May save the wolf victim (';
-        if (potions.save) {
-            str += "<span style=\"text-decoration: underline;\" onClick=\"potions['save']=potions.save-1;$(this).closest('li').hide();\">Use potion</span>";
-        } else {
-            str += 'Already used';
+                str += '<li>All werewolves wake up</li>';
+
+                if (nightCounter===1 && activeChars.wolfhound) {
+                    str += '<li>The wolfhound chooses if he becomes a wolf</li>';
+                } else if (activeChars.wolfhound) {
+                    str += '<li>If the wolfhound chose to be a wolf, wakes up with the wolfs</li>';
+                }
+            
+                if (nightCounter > 1 && activeChars.wildchild) {
+                    str += '<li>If the wildchild\'s role model is dead, he wakes now</li>';
+                }
+
+                if (activeChars.girl) {
+                    str += '<li>The girl may spy. If the wolves notice her, she immediatly becomes the victim</li>';
+                }
+
+                return str + '</ul>';
+
+            case witch:
+                str = 'Witch <ul>';
+
+                str += '<li>May save the wolf victim (';
+                if (potions.save) {
+                    str += "<span style=\"text-decoration: underline;\" onClick=\"potions['save']=potions.save-1;$(this).closest('li').hide();\">Use potion</span>";
+                } else {
+                    str += 'Already used';
+                }
+                str += ')</li>';
+
+                str += '<li>May take a life (';
+                if (potions.kill) {
+                    str += "<span style=\"text-decoration: underline;\" onClick=\"potions['kill']=potions.kill-1;$(this).closest('li').hide();\">Use potion</span>";
+                } else {
+                    str += 'Already used';
+                }
+                str += ')</li>';
+                return str + '</ul>';
+
+            default:
+                return name.charAt(0).toUpperCase() + name.slice(1);
         }
-        str += ')</li>';
+    },
 
-        str += '<li>May take a life (';
-        if (potions.kill) {
-            str += "<span style=\"text-decoration: underline;\" onClick=\"potions['kill']=potions.kill-1;$(this).closest('li').hide();\">Use potion</span>";
-        } else {
-            str += 'Already used';
+    atNightImg: function (name) {
+        let imgs;
+        switch (name) {
+            case 'werewolves':
+                imgs = $('<div></div>');
+
+                [
+                    'werewolves', 'whitewolf', 'wolffather', 'bigbadwolf',
+                    'wolfhound', 'wildchild', 'girl',
+                ].forEach(function (char) {
+                    if (activeChars[char]) {
+                        imgs.append($('#' + char + 'Img')?.clone() || '');
+                    }
+                });
+
+                return imgs.html();
+
+            default:
+                return $('#' + name + 'Img')?.clone() || '';
         }
-        str += ')</li>';
-
-
-        return str + '</ul>';
     },
 };
