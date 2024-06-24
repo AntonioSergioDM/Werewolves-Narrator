@@ -1,6 +1,6 @@
 let charsDiv, firstNightBtn, otherNightBtn, gameTips, resetBtn, activeChars;
 let nightCounter = 0;
-let potions = {save: 1, kill: 1};
+let potions = { save: 1, kill: 1 };
 
 let init = function () {
     initSettings();

@@ -25,6 +25,9 @@ var tips = {
             str += "<li>If the Angel died, he wakes up and wins the game</li>";
         }
 
+        if (activeChars.piper) {
+            str += "<li>If all players are charmed the Piper wins the game</li>";
+        }
 
         if (activeChars.hunter) {
             str += "<li>If the hunter didn't die by the witch, he must shoot NOW!</li>";
@@ -55,18 +58,23 @@ var tips = {
         if (activeChars.idiot) {
             str += "<li>If the idiot has already been revealed, he cannot vote</li>";
             str += "<li>If the idiot is voted, he reveals his card but stays alive as a simple villager</li>";
+        if (activeChars.scapegoat) {
+            str += "<li>In case of a tie, the Scapegoat dies. He then chooses who votes the next day</li>";
+        }
+
+        if (activeChars.servant) {
+            str += "<li>The Devouted Servant may replace his card with the victim before the reveal, gaining it's abilities</li>";
         }
 
         if (activeChars.lovers) {
             str += "<li>A lonely Lover takes is own life out of heatbreak (<span style=\"text-decoration: underline;\" onClick=\"activeChars['lovers']=false;$(this).closest('li').hide();\">Remove Lovers</span>)</li>";
         }
 
-        // scapegoat
-
-        // devouted servant
-
         if (activeChars.judge) {
             str += "<li>The judge may call for an extra vote</li>";
+
+        if (activeChars.piper) {
+            str += "<li>If all players are charmed the Piper wins the game</li>";
         }
 
         return str + '</ul>';
