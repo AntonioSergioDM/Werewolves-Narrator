@@ -197,6 +197,13 @@ var tips = {
                 str += "<li>Can choose to use it\'s power (<span style=\"text-decoration: underline;\" onClick=\"medium=true;$(this).closest('li').hide();\">Channel the dead</span>)</li>";
         
                 return str + '</ul>';
+
+            case 'manipulator':
+                str = 'Manipulator <ul>';
+
+                str += "<li>Divide the players in 2 obvious groups of the same size (like male/female; old/young, married/single)</li>";
+        
+                return str + '</ul>';
             default:
                 return name.charAt(0).toUpperCase() + name.slice(1);
         }

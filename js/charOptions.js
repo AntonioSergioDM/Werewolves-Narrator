@@ -65,7 +65,7 @@ var charOptions = {
     'servant': {},
     'girl': {},
     'villager': {},
-    'manipulator': {},
+    'manipulator': {onlyFirstNight: true},
     'xeriff': {},
     'towncrier': {},
 };

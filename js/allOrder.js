@@ -42,6 +42,7 @@ var listOrder = [
 ];
 
 var nightOrder = [
+    'manipulator',
     'thief',
     'actor',
     'cupid',
@@ -74,6 +75,5 @@ var nightOrder = [
     // 'knight',
     // 'scapegoat',
     // 'angel',
-    // 'manipulator',
     // 'servant',
 ];
