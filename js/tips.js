@@ -226,6 +226,9 @@ var tips = {
 
                 return imgs.html();
 
+            case 'lovers':
+                return $('#werewolvesImg')?.parent().html().replaceAll('werewolves', 'lovers');
+
             default:
                 return $('#' + name + 'Img')?.clone() || '';
         }
