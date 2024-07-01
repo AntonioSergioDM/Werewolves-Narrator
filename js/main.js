@@ -38,6 +38,10 @@ let loadChars = function () {
             char.find('.villageExpansion').remove();
         }
 
+        if (!charOptions[name]?.requiresNewMoon) {
+            char.find('.newMoonExpansion').remove();
+        }
+
         charsDiv.append(char);
     })
 }
