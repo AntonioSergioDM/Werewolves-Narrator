@@ -46,14 +46,17 @@ var charOptions = {
     'idiot': {},
 
     'defender': {requiresModerator: true,},
-    'gypsy': {requiresModerator: true,}, // can be played without with minor adjustments
+    'gypsy': {
+        requiresModerator: true, // can be played without with minor adjustments
+        requiresNewMoon: true,
+    },
     'judge': {
         requiresModerator: true,
         onlyFirstNight: true,
     },
     'knight': {requiresModerator: true,}, // until the on dead events take place
-    'pyromaniac': {},
-    'scandalmonger': {},
+    'pyromaniac': {requiresVillage: true,},
+    'scandalmonger': {requiresVillage: true,},
     'scapegoat': {},
 
     'beartamer': {onlyFirstNight: true},
@@ -63,9 +66,9 @@ var charOptions = {
     'angel': {},
     'piper': {},
     'servant': {},
-    'girl': {},
+    'girl': {requiresModerator: true,}, // can be played without with major adjustments
     'villager': {},
     'manipulator': {onlyFirstNight: true},
     'xeriff': {},
-    'towncrier': {},
+    'towncrier': {requiresNewMoon: true,},
 };
