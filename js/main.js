@@ -29,13 +29,17 @@ let init = function () {
 
 let loadChars = function () {
     let charString = charsDiv.html();
-    let html = '';
+    charsDiv.html('');
 
     listOrder.forEach((name) => {
-        html += charString.replaceAll('character', name);
-    })
+        let char = $(charString.replaceAll('character', name));
 
-    charsDiv.html(html);
+        if (!charOptions[name]?.requiresVillage) {
+            char.find('.villageExpansion').remove();
+        }
+
+        charsDiv.append(char);
+    })
 }
 
 let onCharClick = function (evt) {
