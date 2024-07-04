@@ -56,8 +56,15 @@ var tips = {
             }
             if (potions.kill === 0) {
                 potions.kill = -1;
-                str += "<li>The witch poisoned someone</li>";
+                str += "<li>The witch poisoned someone";
+                if (activeChars.hunter) {
+                    str += ". If the Hunter was poisoned by the witch, he can't shoot</li>";
+                }
             }
+        }
+        
+        if (activeChars.hunter) {
+            str += "<li>The Hunter must shoot immediately!</li>";
         }
 
         if (nightCounter === 1 && activeChars.angel) {
@@ -66,10 +73,6 @@ var tips = {
 
         if (activeChars.piper) {
             str += "<li>If all players are charmed the Piper wins the game</li>";
-        }
-
-        if (activeChars.hunter) {
-            str += "<li>If the Hunter wasn't poisoned by the witch, he must shoot NOW!</li>";
         }
 
         if (activeChars.elder) {
